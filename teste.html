@@ -42,8 +42,8 @@
         }
 
         .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao{
-            display: flex;
-            justify-content: center;
+            display: block;
+            text-align: center;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -53,6 +53,7 @@
 
     <button id="jBold"><b>B</b></button>
     <button id="jItalic"><i>I</i></button>
+    <button id="jJCenter"><i>Centralizar</i></button>
     <div id='fake_textarea' draggable="false" ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());" ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
       Select some text and click the button to make it bold...
       <br>Or write your own text

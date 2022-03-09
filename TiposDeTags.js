@@ -1,13 +1,13 @@
 function TemplateTagTitulo(value){
-	return `<titulo contenteditable="false" class="dispotivo-titulo">Titulo ${value}&zwnj;</titulo>&zwnj;<br />&zwnj;`
+	return `<titulo contenteditable="false" class="dispotivo-titulo">Titulo ${value}&zwnj;</titulo>&zwnj;<br />`
 }
 
 function TemplateTagCapitulo(value){
-	return `<capitulo contenteditable="false"  class="dispotivo-capitulo">Capítulo ${value}&zwnj;</capitulo>&zwnj;<br />&zwnj;`
+	return `<capitulo contenteditable="false"  class="dispotivo-capitulo">Capítulo ${value}&zwnj;</capitulo>&zwnj;<br />`
 }
 
 function TemplateTagSecao(value){
-	return `<secao contenteditable="false"  class="dispotivo-secao">Seção ${value}&zwnj;</secao>&zwnj;<br />&zwnj;`
+	return `<secao contenteditable="false"  class="dispotivo-secao">Seção ${value}&zwnj;</secao>&zwnj;<br />`
 }
 
 function TemplateTagArtigo(value){

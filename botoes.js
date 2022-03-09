@@ -7,6 +7,10 @@ $(document).ready(function() {
 		document.execCommand('italic');
 	});
 
+	$('#jJCenter').click(function(event) {
+		document.execCommand('justifyCenter');
+	});
+
 	$(document).on('keydown', '#fake_textarea', function (e) {
 		if (e.keyCode == 9) {
 			insereTab();
