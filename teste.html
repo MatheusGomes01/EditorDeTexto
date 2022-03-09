@@ -30,6 +30,7 @@
             padding-bottom: 7px;
             padding-top: 7px;
             border: 1px solid black;
+            height: 20px;
         }
 
         .context-menu ul li a {
@@ -74,7 +75,7 @@
 
   <div id="contextMenu" class="context-menu dropend" style="display:none">
       <ul>
-        <li class="dropdown list-group-item-editor dropend" id="insertItensEditor">
+        <li class="dropdown list-group-item-editor dropend" id="insereDispositivoEditor">
             <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 Inserir <span class="caret"></span>
             </span>
@@ -89,6 +90,25 @@
                <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
            </ul>
        </li>
+
+        <li class="dropdown list-group-item-editor dropend" id="editaDispositivoEditor">
+            <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Formatar como <span class="caret"></span>
+            </span>
+            <ul class="dropdown-menu">
+                <li onclick="RemoveTextoSelecionado('titulo')"><a href="#">Desformatar</a></li>
+                <li onclick="formataEvento('titulo')"><a href="#">Titulo</a></li>
+                <li onclick="formataEvento('capitulo')"><a href="#">Capítulo</a></li>
+                <li onclick="formataEvento('secao')"><a href="#">Seção</a></li>
+                <li onclick="formataEvento('artigo')"><a href="#">Artigo</a></li>
+                <li onclick="formataEvento('paragrafo')"><a href="#">Parágrafo</a></li>
+                <li onclick="formataEvento('inciso')"><a href="#">Inciso</a></li>
+                <li onclick="formataEvento('alinea')"><a href="#">Alinea</a></li>
+                <li onclick="formataEvento('item')"><a href="#">Item</a></li>
+           </ul>
+       </li>
+
+        <a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="text-black dropdown list-group-item-editor">Desformatar</a>
    </ul>
 </div>
 
@@ -97,8 +117,9 @@
 <script type="text/javascript" src="PonteiroDoMouse.js"></script>
 <script type="text/javascript" src="adicionaEventos.js"></script>
 <script type="text/javascript" src="TiposDeEventos.js"></script>
-<script type="text/javascript" src="TiposDeTags.js"></script>
+<script type="text/javascript" src="TemplatesDeTags.js"></script>
 <script type="text/javascript" src="ReorganizacaoDispositivos.js"></script>
 <script type="text/javascript" src="CapturaDispositivos.js"></script>
+<script type="text/javascript" src="FormataEventos.js"></script>
 </body>
 </html>

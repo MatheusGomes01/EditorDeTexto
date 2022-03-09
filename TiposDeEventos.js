@@ -5,6 +5,11 @@ function EventoDeTitulo(){
 	return TemplateTagTitulo(romanize(titulo));
 }
 
+function EventoFormatarComoTitulo(value){
+	titulosCustomizados.push({titulo : titulosCustomizados});
+	return TemplateDeTagTituloCustomizado(value);
+}
+
 function EventoDeCapitulo(){
 	capitulo = parseInt(capitulo);
 	capitulo += 1;

@@ -30,6 +30,10 @@ function TemplateTagItem(value){
 	return `<item contenteditable="false"  class="dispotivo-item">${item}.</item>&zwnj;&nbsp;`
 }
 
+function TemplateDeTagTituloCustomizado(value){
+	return `<titulCustomizado class="dispotivo-titulo-customizado">${value}</titulCustomizado>&nbsp;<br />&zwnj;`
+}
+
 function verificaParagrafo(val){
 	
 	if (val >= 1 && val <= 9) {
