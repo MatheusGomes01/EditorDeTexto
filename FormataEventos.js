@@ -1,11 +1,6 @@
 let titulosCustomizados = [];
 let capitulosCustomizados = [];
 let secoesCustomizados = [];
-let artigosCustomizados = [];
-let paragrafosCustomizados = [];
-let incisosCustomizados = [];
-let alineasCustomizados = [];
-let itensCustomizados = [];
 
 var x = '';
 
@@ -29,7 +24,8 @@ function RemoveTextoSelecionado(){
 
 	let texto = selection.anchorNode;
 
-	$('#fake_textarea').html($('#fake_textarea').html().replace(getSelectionHTML(), selection.toString()))
+	$('#fake_textarea').html($('#fake_textarea').html().replace(getSelectionHTML(), selection.toString()))/
+	ReorganizacaoGeral();
 }
 
 function getSelectionHTML() {
@@ -57,25 +53,25 @@ function VerificaTipoDeEventoFormatado(value, textoSelecionado){
 		return EventoFormatarComoTitulo(textoSelecionado);
 		break;
 		case 'capitulo':
-		return EventoDeCapitulo();
+		return EventoFormatarComoCapitulo(textoSelecionado);
 		break;
 		case 'secao':
-		return EventoDeSecao();
+		return EventoFormatarComoSecao(textoSelecionado);
 		break;
 		case 'artigo':
-		return EventoDeArtigo();
+		return EventoFormatarComoArtigo(textoSelecionado);
 		break;
 		case 'paragrafo':
-		return EventoDeParagrafo();
+		return EventoFormatarComoParagrafo(textoSelecionado);
 		break;
 		case 'inciso':
-		return EventoDeInciso();
+		return EventoFormatarComoInciso(textoSelecionado);
 		break;
 		case 'alinea':
-		return EventoDeAlinea();
+		return EventoFormatarComoAlinea(textoSelecionado);
 		break;
 		case 'item':
-		return EventoDeItem();
+		return EventoFormatarComoItem(textoSelecionado);
 		break;
 
 	}

@@ -42,7 +42,7 @@
             background: darkgray;
         }
 
-        .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao{
+        .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao, .dispotivo-titulo-customizado, .dispotivo-capitulo-customizado, .dispotivo-secao-customizado{
             display: block;
             text-align: center;
         }
@@ -54,6 +54,7 @@
         .dropdown:hover > .dropdown-menu{
             display: block;
             margin-left: 100%;
+            margin-top: -17%;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -96,7 +97,6 @@
                 Formatar como <span class="caret"></span>
             </span>
             <ul class="dropdown-menu">
-                <li onclick="RemoveTextoSelecionado('titulo')"><a href="#">Desformatar</a></li>
                 <li onclick="formataEvento('titulo')"><a href="#">Titulo</a></li>
                 <li onclick="formataEvento('capitulo')"><a href="#">Capítulo</a></li>
                 <li onclick="formataEvento('secao')"><a href="#">Seção</a></li>
@@ -108,7 +108,7 @@
            </ul>
        </li>
 
-        <a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="text-black dropdown list-group-item-editor">Desformatar</a>
+        <a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="list-group-item-editor dropend">Desformatar</a>
    </ul>
 </div>
 

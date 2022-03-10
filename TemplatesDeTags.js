@@ -3,36 +3,67 @@ function TemplateTagTitulo(value){
 }
 
 function TemplateTagCapitulo(value){
-	return `<capitulo contenteditable="false"  class="dispotivo-capitulo">Capítulo ${value}&zwnj;</capitulo>&zwnj;<br />`
+	return `<capitulo contenteditable="false" class="dispotivo-capitulo">Capítulo ${value}&zwnj;</capitulo>&zwnj;<br />`
 }
 
 function TemplateTagSecao(value){
-	return `<secao contenteditable="false"  class="dispotivo-secao">Seção ${value}&zwnj;</secao>&zwnj;<br />`
+	return `<secao contenteditable="false" class="dispotivo-secao">Seção ${value}&zwnj;</secao>&zwnj;<br />`
 }
 
 function TemplateTagArtigo(value){
-	return `<artigo contenteditable="false"  class="dispotivo-artigo">Art. ${value} ${value <= 9 ? '° ' : ''}</artigo>&zwnj;&nbsp;`
+	return `<artigo contenteditable="false" class="dispotivo-artigo">Art. ${value} ${value <= 9 ? '° ' : ''}</artigo>&zwnj;&nbsp;`
 }
 
 function TemplateTagParagrafo(value){
-	return `<paragrafo contenteditable="false"  class="dispotivo-paragrafo">${verificaParagrafo(value)}</paragrafo>&zwnj;&nbsp;`
+	return `<paragrafo contenteditable="false" class="dispotivo-paragrafo">${verificaParagrafo(value)}</paragrafo>&zwnj;&nbsp;`
 }
 
 function TemplateTagInciso(value){
-	return `<inciso contenteditable="false"  class="dispotivo-inciso">${value} -</inciso>&zwnj;&nbsp;`
+	return `<inciso contenteditable="false" class="dispotivo-inciso">${value} -</inciso>&zwnj;&nbsp;`
 }
 
 function TemplateTagAlinea(value){
-	return `<alinea contenteditable="false"  class="dispotivo-alinea">${String.fromCharCode(value + 64)})</alinea>&zwnj;&nbsp;`
+	return `<alinea contenteditable="false" class="dispotivo-alinea">${String.fromCharCode(value + 64)})</alinea>&zwnj;&nbsp;`
 }
 
 function TemplateTagItem(value){
-	return `<item contenteditable="false"  class="dispotivo-item">${item}.</item>&zwnj;&nbsp;`
+	return `<item contenteditable="false" class="dispotivo-item">${item}.</item>&zwnj;&nbsp;`
 }
 
+
+
 function TemplateDeTagTituloCustomizado(value){
-	return `<titulCustomizado class="dispotivo-titulo-customizado">${value}</titulCustomizado>&nbsp;<br />&zwnj;`
+	return `<tituloCustomizado class="dispotivo-titulo-customizado">${value}</tituloCustomizado>&nbsp;<br />&zwnj;`
 }
+
+function TemplateDeTagCapituloCustomizado(value){
+	return `<capituloCustomizado class="dispotivo-capitulo-customizado">${value}</capituloCustomizado>&nbsp;<br />&zwnj;`
+}
+
+function TemplateDeTagSecaoCustomizado(value){
+	return `<secaoCustomizado class="dispotivo-secao-customizado">${value}</secaoCustomizado>&nbsp;<br />&zwnj;`
+}
+
+function TemplateDeTagArtigoCustomizado(artigo, value){
+	return `<artigo contenteditable="false" class="dispotivo-artigo">Art. ${artigo} ${artigo <= 9 ? '° ' : ''}</artigo>&zwnj;&nbsp;${value}`
+}
+
+function TemplateDeTagParagrafoCustomizado(paragrafo,value){
+	return `<paragrafo contenteditable="false" class="dispotivo-paragrafo">${verificaParagrafo(paragrafo)}</paragrafo>&zwnj;&nbsp;${value}`
+} 
+
+function TemplateDeTagIncisoCustomizado(inciso, value){
+	return `<inciso contenteditable="false" class="dispotivo-inciso">${inciso} -</inciso>&zwnj;&nbsp;${value}`
+} 
+
+function TemplateDeTagAlineaCustomizado(alinea, value){
+	return `<alinea contenteditable="false" class="dispotivo-alinea">${String.fromCharCode(alinea + 64)})</alinea>&zwnj;&nbsp;${value}`
+} 
+
+function TemplateDeTagItemCustomizado(value){
+	return `<item contenteditable="false" class="dispotivo-item">${item}.</item>&zwnj;&nbsp;${value}`
+} 
+
 
 function verificaParagrafo(val){
 	
