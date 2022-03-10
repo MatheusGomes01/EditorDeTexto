@@ -7,8 +7,46 @@ $(document).ready(function() {
 		document.execCommand('italic');
 	});
 
+	$('#jUnderline').click(function(event) {
+		document.execCommand('underline');
+	});
+
+	$('#jStrikethrough').click(function(event) {
+		document.execCommand('strikethrough');
+	});
+	
+	$('#jFontFamily').change(function(event) {
+		document.execCommand("fontName", false, event.target.value);
+	});
+
+	$('#jFontSize').change(function(event) {
+		document.execCommand("fontSize", false, event.target.value);
+		var fontElements = window.getSelection().anchorNode.parentNode
+		fontElements.removeAttribute("size");
+		fontElements.style.fontSize = `${event.target.value}px`;
+	});
+
+	$('#jForeColor').change(function(event) {
+		document.execCommand('styleWithCSS', false, true);
+		document.execCommand('foreColor', false, "rgba(0,0,0,0.5)");
+	});
+	
+	
+
 	$('#jJCenter').click(function(event) {
 		document.execCommand('justifyCenter');
+	});
+
+	$('#jJFull').click(function(event) {
+		document.execCommand('justifyFull');
+	});
+
+	$('#jJLeft').click(function(event) {
+		document.execCommand('justifyLeft');
+	});
+
+	$('#jJRight').click(function(event) {
+		document.execCommand('justifyRight');
 	});
 
 	$(document).on('keydown', '#fake_textarea', function (e) {
@@ -27,6 +65,11 @@ $(document).ready(function() {
 			e.preventDefault();
 		}
 	});
+
+	let fontsSizes = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+	fontsSizes.map((e) => {
+		$('#jFontSize').append(`<option value='${e}'>${e}</option>`)
+	})
 });
 
 function insereTab() {

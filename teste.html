@@ -11,129 +11,143 @@
             padding: 20px;
         }
 
-        #fake_textarea::selection { 
+        /*#fake_textarea::selection { 
             background: yellow; 
             text-shadow: 2px 2px #FF0000;
-        }
+            }*/
 
-        button {
-            font-weigth: bold;
-        }
+            button {
+                font-weigth: bold;
+            }
 
-        .context-menu {
-            position: absolute;
-            text-align: center;
-            background: lightgray;
-            border: 1px solid black;
-        }
+            .context-menu {
+                position: absolute;
+                text-align: center;
+                background: lightgray;
+                border: 1px solid black;
+            }
 
-        .context-menu ul {
-            padding: 0px;
-            margin: 0px;
-            min-width: 150px;
-            list-style: none;
-        }
+            .context-menu ul {
+                padding: 0px;
+                margin: 0px;
+                min-width: 150px;
+                list-style: none;
+            }
 
-        .context-menu ul li {
-            padding-bottom: 7px;
-            padding-top: 7px;
-            border: 1px solid black;
-            height: 20px;
-        }
+            .context-menu ul li {
+                padding-bottom: 7px;
+                padding-top: 7px;
+                border: 1px solid black;
+                height: 20px;
+            }
 
-        .context-menu ul li a {
-            text-decoration: none;
-            color: black;
-        }
+            .context-menu ul li a {
+                text-decoration: none;
+                color: black;
+            }
 
-        .context-menu ul li:hover {
-            background: darkgray;
-        }
+            .context-menu ul li:hover {
+                background: darkgray;
+            }
 
-        .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao, .dispotivo-titulo-customizado, .dispotivo-capitulo-customizado, .dispotivo-secao-customizado{
-            display: block;
-            text-align: center;
-        }
+            .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao, .dispotivo-titulo-customizado, .dispotivo-capitulo-customizado, .dispotivo-secao-customizado{
+                display: block;
+                text-align: center;
+            }
 
-        .dropdown-menu {
-            display: none;
-        }
+            .dropdown-menu {
+                display: none;
+            }
 
-        .dropdown:hover>.dropdown-menu {
-            display: block;
-            margin-left: 100%;
-            margin-top: -17%;
-        }
-    </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-</head>
+            .dropdown:hover>.dropdown-menu {
+                display: block;
+                margin-left: 100%;
+                margin-top: -17%;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    </head>
 
-<body>
+    <body>
 
-    <button id="jBold"><b>B</b></button>
-    <button id="jItalic"><i>I</i></button>
-    <button id="jJCenter"><i>Centralizar</i></button>
+        <button id="jBold"><b>B</b></button>
+        <button id="jItalic"><i>I</i></button>
+        <button id="jUnderline"><u>U</u></button>
+        <button id="jStrikethrough"><span style="text-decoration: line-through;">S</span></button>
+        <select id="jFontSize">
+            <option value="10">10</option>
+        </select>
+        <select id="jFontFamily">
+            <option value="Arial">Arial</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+        </select>
+        <button id="jJCenter"><i>Centralizar</i></button>
+        <button id="jJFull"><i>Justificado</i></button>
+        <button id="jJLeft"><i>Alinhado a esquerda</i></button>
+        <button id="jJRight"><i>Alinhado a direita</i></button>
 
-    <div slider id="slider-distance">
-        <div>
-          <div inverse-left style="width:70%;"></div>
-          <div inverse-right style="width:70%;"></div>
-          <div range style="left:0%;right:0%;"></div>
-          <span id="thumbright" thumb style="left:0%;"></span>
-          <span id="thumbleft" thumb style="left:100%;"></span>
-          
+
+        <div slider id="slider-distance">
+            <div>
+              <div inverse-left style="width:70%;"></div>
+              <div inverse-right style="width:70%;"></div>
+              <div range style="left:0%;right:0%;"></div>
+              <span id="thumbright" thumb style="left:0%;"></span>
+              <span id="thumbleft" thumb style="left:100%;"></span>
+
+          </div>
+          <input class="first" type="range" value="0" max="100" min="0" step="1"/>
+
+          <input class="last" type="range" value="100" max="100" min="0" step="1" />
+
+          <div id="desenho" style="display:flex; justify-content:space-between; gap:10px;"></div>
       </div>
-      <input class="first" type="range" value="0" max="100" min="0" step="1"/>
-      
-      <input class="last" type="range" value="100" max="100" min="0" step="1" />
 
-      <div id="desenho" style="display:flex; justify-content:space-between; gap:10px;"></div>
+      <div id='fake_textarea' draggable="false"
+      ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());"
+      ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
+      Select some text and click the button to make it bold...
+      <br>Or write your own text
   </div>
 
-  <div id='fake_textarea' draggable="false"
-  ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());"
-  ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
-  Select some text and click the button to make it bold...
-  <br>Or write your own text
-</div>
 
+  <div id="contextMenu" class="context-menu dropend" style="display:none">
+      <ul>
+        <li class="dropdown list-group-item-editor dropend" id="insereDispositivoEditor">
+            <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                Inserir <span class="caret"></span>
+            </span>
+            <ul class="dropdown-menu">
+               <li onclick="adicionaEvento('titulo')"><a href="#">Titulo</a></li>
+               <li onclick="adicionaEvento('capitulo')"><a href="#">Capítulo</a></li>
+               <li onclick="adicionaEvento('secao')"><a href="#">Seção</a></li>
+               <li onclick="adicionaEvento('artigo')"><a href="#">Artigo</a></li>
+               <li onclick="adicionaEvento('paragrafo')"><a href="#">Parágrafo</a></li>
+               <li onclick="adicionaEvento('inciso')"><a href="#">Inciso</a></li>
+               <li onclick="adicionaEvento('alinea')"><a href="#">Alinea</a></li>
+               <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
+           </ul>
+       </li>
 
-<div id="contextMenu" class="context-menu dropend" style="display:none">
-  <ul>
-    <li class="dropdown list-group-item-editor dropend" id="insereDispositivoEditor">
+       <li class="dropdown list-group-item-editor dropend" id="editaDispositivoEditor">
         <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            Inserir <span class="caret"></span>
+            Formatar como <span class="caret"></span>
         </span>
         <ul class="dropdown-menu">
-         <li onclick="adicionaEvento('titulo')"><a href="#">Titulo</a></li>
-         <li onclick="adicionaEvento('capitulo')"><a href="#">Capítulo</a></li>
-         <li onclick="adicionaEvento('secao')"><a href="#">Seção</a></li>
-         <li onclick="adicionaEvento('artigo')"><a href="#">Artigo</a></li>
-         <li onclick="adicionaEvento('paragrafo')"><a href="#">Parágrafo</a></li>
-         <li onclick="adicionaEvento('inciso')"><a href="#">Inciso</a></li>
-         <li onclick="adicionaEvento('alinea')"><a href="#">Alinea</a></li>
-         <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
-     </ul>
- </li>
+            <li onclick="formataEvento('titulo')"><a href="#">Titulo</a></li>
+            <li onclick="formataEvento('capitulo')"><a href="#">Capítulo</a></li>
+            <li onclick="formataEvento('secao')"><a href="#">Seção</a></li>
+            <li onclick="formataEvento('artigo')"><a href="#">Artigo</a></li>
+            <li onclick="formataEvento('paragrafo')"><a href="#">Parágrafo</a></li>
+            <li onclick="formataEvento('inciso')"><a href="#">Inciso</a></li>
+            <li onclick="formataEvento('alinea')"><a href="#">Alinea</a></li>
+            <li onclick="formataEvento('item')"><a href="#">Item</a></li>
+        </ul>
+    </li>
 
- <li class="dropdown list-group-item-editor dropend" id="editaDispositivoEditor">
-    <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-        Formatar como <span class="caret"></span>
-    </span>
-    <ul class="dropdown-menu">
-        <li onclick="formataEvento('titulo')"><a href="#">Titulo</a></li>
-        <li onclick="formataEvento('capitulo')"><a href="#">Capítulo</a></li>
-        <li onclick="formataEvento('secao')"><a href="#">Seção</a></li>
-        <li onclick="formataEvento('artigo')"><a href="#">Artigo</a></li>
-        <li onclick="formataEvento('paragrafo')"><a href="#">Parágrafo</a></li>
-        <li onclick="formataEvento('inciso')"><a href="#">Inciso</a></li>
-        <li onclick="formataEvento('alinea')"><a href="#">Alinea</a></li>
-        <li onclick="formataEvento('item')"><a href="#">Item</a></li>
-    </ul>
-</li>
-
-<a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="list-group-item-editor dropend">Desformatar</a>
+    <a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="list-group-item-editor dropend">Desformatar</a>
 </ul>
 </div>
 
