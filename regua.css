@@ -1,0 +1,250 @@
+.second-container{
+    margin-top:50px;
+  }
+  
+  .ranges{
+    display:flex;
+    gap:100px;
+  }
+  
+  input.xdirection{
+    width: 200px;
+  }
+
+  input.ydirection{
+      width: 300px;
+  }
+
+
+  
+  .code-container {
+    margin-top:50px;
+    display:inline-block;
+    padding:15px;
+    text-align: center;
+    background-color: #272822;
+    border-radius: 3px;
+    color: #F8F8F2;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+    font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  }
+  
+  .token-function {
+    color: #E6DB74;
+    width: 40px;
+  }
+
+
+  /* regras de slider */
+
+
+  .slidecontainer {
+    width: 100%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    width: 90%; /* Full-width */
+    height: 25px; /* Specified height */
+    background: #d3d3d3; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    background: #04AA6D; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+
+  /* segundo o exemplo stack overflow slider */
+
+   .risco-guia-maior{
+    height:8px;
+   }
+
+   .risco-guia-menor{
+    height:8px;
+   }
+
+   .risco-guia-numero{
+    height:8px;
+    font-size: 11px;
+   }
+
+   #thumbright{
+    left: 13%;
+    width: 0px;
+    height: 0px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 20px solid rgba(14, 107, 241, 0.86);
+   }
+
+   #thumbleft{
+    left: 13%;
+    width: 0px;
+    height: 0px;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 20px solid rgba(14, 107, 241, 0.86);
+   }
+
+  [slider] {
+
+    width: 100%;
+    position: relative;
+    height: 5px;
+    margin: 10px 0 -10px 0;
+  }
+  
+  [slider] > div {
+    position: absolute;
+    left: 13px;
+    right: 15px;
+    height: 5px;
+  }
+  [slider] > div > [inverse-left] {
+    position: absolute;
+    left: 0;
+    height: 10px;
+    background-color: #CCC;
+    margin: 0 -11px; /* para poder preencher o editor */
+  }
+  
+  [slider] > div > [inverse-right] {
+    position: absolute;
+    right: 0;
+    height: 10px;
+    background-color: #CCC;
+    margin: 0 7px;
+  }
+  
+  
+  [slider] > div > [range] {
+    position: absolute;
+    left: 0;
+    height: 10px;
+    border-radius: 14px;
+    background-color: #ffffffbf;
+  }
+  
+  [slider] > div > [thumb] {
+    position: absolute;
+    top: -7px;
+    z-index: 2;
+   /* height: 20px; */ 
+   /* width: 20px; */ 
+    text-align: left;
+    cursor: pointer;
+   /* box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); */ 
+   /*  background-color: #FFF;*/
+    /* border-radius: 50%;*/
+    outline: none;
+  }
+  
+  [slider] > input[type=range] {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 3;
+    height: 14px;
+    top: -2px;
+    width: 100%;
+    opacity: 0;
+  }
+  
+  div[slider] > input[type=range]:focus::-webkit-slider-runnable-track {
+    background: transparent;
+    border: transparent;
+  }
+  
+  div[slider] > input[type=range]:focus {
+    outline: none;
+  }
+  
+  div[slider] > input[type=range]::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 28px;
+    height: 28px;
+    border-radius: 0px;
+    border: 0 none;
+    background: red;
+    -webkit-appearance: none;
+  }
+  
+  div[slider] > input[type=range]::-ms-fill-lower {
+    background: transparent;
+    border: 0 none;
+  }
+  
+  div[slider] > input[type=range]::-ms-fill-upper {
+    background: transparent;
+    border: 0 none;
+  }
+  
+  div[slider] > input[type=range]::-ms-tooltip {
+    display: none;
+  }
+  
+  [slider] > div > [sign] {
+    opacity: 0;
+    position: absolute;
+    margin-left: -11px;
+    top: -39px;
+    z-index:3;
+    background-color: #d02128;
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 28px;
+    -webkit-border-radius: 28px;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  [slider] > div > [sign]:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    border-radius: 16px;
+    top: 19px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top-width: 16px;
+    border-top-style: solid;
+    border-top-color: #d02128;
+  }
+  
+  [slider] > div > [sign] > span {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 28px;
+  }
+  
+  [slider]:hover > div > [sign] {
+    opacity: 1;
+  }

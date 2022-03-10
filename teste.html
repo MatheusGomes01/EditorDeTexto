@@ -1,8 +1,11 @@
 <html>
+
 <head>
+    <link rel="stylesheet" href="regua.css">
+
     <style type="text/css">
         #fake_textarea {
-            width: 100%;
+            max-width: 100%;
             height: 200px;
             border: 1px solid red;
             padding: 20px;
@@ -41,16 +44,18 @@
             background: darkgray;
         }
 
-        .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao{
+        .dispotivo-titulo,
+        .dispotivo-capitulo,
+        .dispotivo-secao {
             display: block;
             text-align: center;
         }
 
-        .dropdown-menu{
+        .dropdown-menu {
             display: none;
         }
 
-        .dropdown:hover > .dropdown-menu{
+        .dropdown:hover>.dropdown-menu {
             display: block;
             margin-left: 100%;
         }
@@ -58,47 +63,67 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
+
 <body>
 
     <button id="jBold"><b>B</b></button>
     <button id="jItalic"><i>I</i></button>
     <button id="jJCenter"><i>Centralizar</i></button>
-    <div id='fake_textarea' draggable="false" ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());" ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
-      Select some text and click the button to make it bold...
-      <br>Or write your own text
-  </div>
 
+    <div slider id="slider-distance">
+        <div>
+          <div inverse-left style="width:70%;"></div>
+          <div inverse-right style="width:70%;"></div>
+          <div range style="left:0%;right:0%;"></div>
+          <span id="thumbright" thumb style="left:0%;"></span>
+          <span id="thumbleft" thumb style="left:100%;"></span>
+          
+        </div>
+        <input class="first" type="range" value="0" max="100" min="0" step="1"/>
+      
+        <input class="last" type="range" value="100" max="100" min="0" step="1" />
 
+        <div id="desenho" style="display:flex; justify-content:space-between; gap:10px;"></div>
+      </div>
 
+    <div id='fake_textarea' draggable="false"
+        ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());"
+        ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
+        Select some text and click the button to make it bold...
+        <br>Or write your own text
+    </div>
 
+    <div id="contextMenu" class="context-menu dropend" style="display:none">
+        <ul>
+            <li class="dropdown list-group-item-editor dropend" id="insertItensEditor">
+                <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">
+                    Inserir <span class="caret"></span>
+                </span>
+                <ul class="dropdown-menu">
+                    <li onclick="adicionaEvento('titulo')"><a href="#">Titulo</a></li>
+                    <li onclick="adicionaEvento('capitulo')"><a href="#">Capítulo</a></li>
+                    <li onclick="adicionaEvento('secao')"><a href="#">Seção</a></li>
+                    <li onclick="adicionaEvento('artigo')"><a href="#">Artigo</a></li>
+                    <li onclick="adicionaEvento('paragrafo')"><a href="#">Parágrafo</a></li>
+                    <li onclick="adicionaEvento('inciso')"><a href="#">Inciso</a></li>
+                    <li onclick="adicionaEvento('alinea')"><a href="#">Alinea</a></li>
+                    <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 
-  <div id="contextMenu" class="context-menu dropend" style="display:none">
-      <ul>
-        <li class="dropdown list-group-item-editor dropend" id="insertItensEditor">
-            <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Inserir <span class="caret"></span>
-            </span>
-            <ul class="dropdown-menu">
-               <li onclick="adicionaEvento('titulo')"><a href="#">Titulo</a></li>
-               <li onclick="adicionaEvento('capitulo')"><a href="#">Capítulo</a></li>
-               <li onclick="adicionaEvento('secao')"><a href="#">Seção</a></li>
-               <li onclick="adicionaEvento('artigo')"><a href="#">Artigo</a></li>
-               <li onclick="adicionaEvento('paragrafo')"><a href="#">Parágrafo</a></li>
-               <li onclick="adicionaEvento('inciso')"><a href="#">Inciso</a></li>
-               <li onclick="adicionaEvento('alinea')"><a href="#">Alinea</a></li>
-               <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
-           </ul>
-       </li>
-   </ul>
-</div>
-
-<script type="text/javascript" src="botoes.js"></script>
-<script type="text/javascript" src="contextmenu.js"></script>
-<script type="text/javascript" src="PonteiroDoMouse.js"></script>
-<script type="text/javascript" src="adicionaEventos.js"></script>
-<script type="text/javascript" src="TiposDeEventos.js"></script>
-<script type="text/javascript" src="TiposDeTags.js"></script>
-<script type="text/javascript" src="ReorganizacaoDispositivos.js"></script>
-<script type="text/javascript" src="CapturaDispositivos.js"></script>
+    <script type="text/javascript" src="botoes.js"></script>
+    <script type="text/javascript" src="contextmenu.js"></script>
+    <script type="text/javascript" src="PonteiroDoMouse.js"></script>
+    <script type="text/javascript" src="adicionaEventos.js"></script>
+    <script type="text/javascript" src="TiposDeEventos.js"></script>
+    <script type="text/javascript" src="TiposDeTags.js"></script>
+    <script type="text/javascript" src="ReorganizacaoDispositivos.js"></script>
+    <script type="text/javascript" src="CapturaDispositivos.js"></script>
+    <script type="text/javascript" src="regua.js"></script>
+   
 </body>
+
 </html>
