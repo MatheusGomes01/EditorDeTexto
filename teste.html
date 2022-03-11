@@ -92,23 +92,23 @@
 
 
 
-    <div slider id="slider-distance">
-        <div>
-          <span inverse-left  style="width:70%;"></span>
-          <span inverse-right  style="width:70%;"></span>
-          <div range style="left:0%;right:0%;"></div>
-          <span id="paragrafoInicial" thumb style="left:0%;"></span>
-          <span id="paragrafoFinal" thumb style="left:100%;"></span>
-       </div>
+        <div slider id="slider-distance">
+            <div>
+              <span inverse-left  style="width:70%;"></span>
+              <span inverse-right  style="width:70%;"></span>
+              <div range style="left:0%;right:0%;"></div>
+              <span id="paragrafoInicial" thumb style="left:0%;"></span>
+              <span id="paragrafoFinal" thumb style="left:100%;"></span>
+          </div>
 
-      <input id="paragrafFirstCursor" type="range" value="0" max="100" min="0" step="1"/>
-      
-      <input id="paragrafLastCursor" type="range" value="100" max="100" min="0" step="1" />
+          <input id="paragrafFirstCursor" type="range" value="0" max="100" min="0" step="1"/>
 
-    </div>
+          <input id="paragrafLastCursor" type="range" value="100" max="100" min="0" step="1" />
+
+      </div>
 
 
-    <div slider id="slider-distance">
+      <div slider id="slider-distance">
         <div>
           <div inverse-left style="width:70%;"></div>
           <div inverse-right style="width:70%;"></div>
@@ -117,54 +117,57 @@
           <span id="thumbleft" thumb style="left:100%;"></span>
           
       </div>
-      <input id="firstCursorRule" type="range" value="0" max="100" min="0" step="1"/>
-      
-      <input id="lastCursosRule" type="range" value="100" max="100" min="0" step="1" />
-
-
-      <div id='fake_textarea' draggable="false"
-      ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());"
-      ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
-      Select some text and click the button to make it bold...
-      <br>Or write your own text
+      <div id="desenho" style="display:flex; justify-content:space-between; gap:10px;"></div>
   </div>
+  
+  <input id="firstCursorRule" type="range" value="0" max="100" min="0" step="1"/>
+
+  <input id="lastCursosRule" type="range" value="100" max="100" min="0" step="1" />
 
 
-  <div id="contextMenu" class="context-menu dropend" style="display:none">
-      <ul>
-        <li class="dropdown list-group-item-editor dropend" id="insereDispositivoEditor">
-            <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                Inserir <span class="caret"></span>
-            </span>
-            <ul class="dropdown-menu">
-               <li onclick="adicionaEvento('titulo')"><a href="#">Titulo</a></li>
-               <li onclick="adicionaEvento('capitulo')"><a href="#">Capítulo</a></li>
-               <li onclick="adicionaEvento('secao')"><a href="#">Seção</a></li>
-               <li onclick="adicionaEvento('artigo')"><a href="#">Artigo</a></li>
-               <li onclick="adicionaEvento('paragrafo')"><a href="#">Parágrafo</a></li>
-               <li onclick="adicionaEvento('inciso')"><a href="#">Inciso</a></li>
-               <li onclick="adicionaEvento('alinea')"><a href="#">Alinea</a></li>
-               <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
-           </ul>
-       </li>
+  <div id='fake_textarea' draggable="false"
+  ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());"
+  ondragend="ReorganizacaoGeral();" contenteditable style="height: 100%; overflow-y: auto;">
+  Select some text and click the button to make it bold...
+  <br>Or write your own text
+</div>
 
-       <li class="dropdown list-group-item-editor dropend" id="editaDispositivoEditor">
+
+<div id="contextMenu" class="context-menu dropend" style="display:none">
+  <ul>
+    <li class="dropdown list-group-item-editor dropend" id="insereDispositivoEditor">
         <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            Formatar como <span class="caret"></span>
+            Inserir <span class="caret"></span>
         </span>
         <ul class="dropdown-menu">
-            <li onclick="formataEvento('titulo')"><a href="#">Titulo</a></li>
-            <li onclick="formataEvento('capitulo')"><a href="#">Capítulo</a></li>
-            <li onclick="formataEvento('secao')"><a href="#">Seção</a></li>
-            <li onclick="formataEvento('artigo')"><a href="#">Artigo</a></li>
-            <li onclick="formataEvento('paragrafo')"><a href="#">Parágrafo</a></li>
-            <li onclick="formataEvento('inciso')"><a href="#">Inciso</a></li>
-            <li onclick="formataEvento('alinea')"><a href="#">Alinea</a></li>
-            <li onclick="formataEvento('item')"><a href="#">Item</a></li>
-        </ul>
-    </li>
+         <li onclick="adicionaEvento('titulo')"><a href="#">Titulo</a></li>
+         <li onclick="adicionaEvento('capitulo')"><a href="#">Capítulo</a></li>
+         <li onclick="adicionaEvento('secao')"><a href="#">Seção</a></li>
+         <li onclick="adicionaEvento('artigo')"><a href="#">Artigo</a></li>
+         <li onclick="adicionaEvento('paragrafo')"><a href="#">Parágrafo</a></li>
+         <li onclick="adicionaEvento('inciso')"><a href="#">Inciso</a></li>
+         <li onclick="adicionaEvento('alinea')"><a href="#">Alinea</a></li>
+         <li onclick="adicionaEvento('item')"><a href="#">Item</a></li>
+     </ul>
+ </li>
 
-    <a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="list-group-item-editor dropend">Desformatar</a>
+ <li class="dropdown list-group-item-editor dropend" id="editaDispositivoEditor">
+    <span class="dropdown-toggle dropend" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Formatar como <span class="caret"></span>
+    </span>
+    <ul class="dropdown-menu">
+        <li onclick="formataEvento('titulo')"><a href="#">Titulo</a></li>
+        <li onclick="formataEvento('capitulo')"><a href="#">Capítulo</a></li>
+        <li onclick="formataEvento('secao')"><a href="#">Seção</a></li>
+        <li onclick="formataEvento('artigo')"><a href="#">Artigo</a></li>
+        <li onclick="formataEvento('paragrafo')"><a href="#">Parágrafo</a></li>
+        <li onclick="formataEvento('inciso')"><a href="#">Inciso</a></li>
+        <li onclick="formataEvento('alinea')"><a href="#">Alinea</a></li>
+        <li onclick="formataEvento('item')"><a href="#">Item</a></li>
+    </ul>
+</li>
+
+<a href="javascript:void(0)" onclick="RemoveTextoSelecionado()" class="list-group-item-editor dropend">Desformatar</a>
 </ul>
 </div>
 
