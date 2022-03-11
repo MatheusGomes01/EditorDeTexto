@@ -6,14 +6,14 @@ var escala_numerica = new DocumentFragment();
 
 for (let index = 0; index < 10; index++) {
 
-    var linha = document.createElement('div');
-    linha.className = 'risco-guia-numero';
-    linha.innerHTML = index;
-    linha.style.gap = '1em';
-    escala_numerica.appendChild(linha);
-    AdicionaEscalaMenor(escala_numerica);
-    AdicionaEscalaMaior(escala_numerica);
-    AdicionaEscalaMenor(escala_numerica);
+  var linha = document.createElement('div');
+  linha.className = 'risco-guia-numero';
+  linha.innerHTML = index;
+  linha.style.gap = '1em';
+  escala_numerica.appendChild(linha);
+  AdicionaEscalaMenor(escala_numerica);
+  AdicionaEscalaMaior(escala_numerica);
+  AdicionaEscalaMenor(escala_numerica);
 
 }
 
@@ -21,108 +21,159 @@ function AdicionaEscalaMenor(ofrarmento)
 {
    // var escala_menor = new DocumentFragment();
 
-    for (let index = 0; index < 3; index++) {
+   for (let index = 0; index < 3; index++) {
 
-        var linha = document.createElement('div');
-            linha.className = 'risco-guia-menor';
-            linha.style.borderLeft = '1px solid black';
-            linha.style.gap = '1em';
-            ofrarmento.appendChild(linha);
-    }
+    var linha = document.createElement('div');
+    linha.className = 'risco-guia-menor';
+    linha.style.borderLeft = '1px solid black';
+    linha.style.gap = '1em';
+    ofrarmento.appendChild(linha);
+  }
 }
 
 function AdicionaEscalaMaior(ofrarmento)
 {
-        var linha = document.createElement('div');
-            linha.className = 'risco-guia-menor';
-            linha.style.borderLeft = '1px solid black';
-            linha.style.paddingTop = '1px';
-            linha.style.paddingBottom = '1px';
-            linha.style.gap = '1em';
-            ofrarmento.appendChild(linha);
-    
+  var linha = document.createElement('div');
+  linha.className = 'risco-guia-menor';
+  linha.style.borderLeft = '1px solid black';
+  linha.style.paddingTop = '1px';
+  linha.style.paddingBottom = '1px';
+  linha.style.gap = '1em';
+  ofrarmento.appendChild(linha);
+
 }
 
-var desenho = document.querySelectorAll("#desenho")[0];
+var desenho = document.querySelector("#desenho");
 desenho.appendChild(escala_numerica);
 
 
 /*slier que esta em stackoverflow */ 
 
-function entradaDeSliderFirst(elementClicked, isParagrafo)
+function entradaDeSliderFirst(elementClicked)
 {  
-  
-  elementClicked.value=Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
-  let value = (elementClicked.value/parseInt(elementClicked.max))*100
-  var children = elementClicked.parentNode.childNodes[1].childNodes;
-  children[1].style.width=value+'%';
-  children[5].style.left=value+'%';
-  children[7].style.left=value+'%';
 
-  if(isParagrafo)
-  {
+  let avanco = false;
+   if( parseInt(document.querySelector('#thumbright').style.left) < elementClicked.value )
+   {
+      avanco = true;
+   };
+
+  console.log(document.querySelector('#thumbright').style.left.replace("%", ''));
+  console.log(elementClicked.value);
+
+  let value = (elementClicked.value/parseInt(elementClicked.max))*100;
+
+    document.querySelector('#inverse-left-margin').style.width=value+'%';
+    document.querySelector('#range-margin').style.left=value+'%';
+    document.querySelector('#thumbright').style.left=value+'%';
+
     document.querySelector('#fake_textarea').style.paddingLeft = (value + "%");
-  }
+  
 
-  if(elementClicked.id == "firstCursorRule")
-  {
-    const cursor_paragrafo = document.querySelector('#paragrafFirstCursor');
-// logica de seguir cursor 
-    if(cursor_paragrafo.value < elementClicked.value)
+    var cursor_paragrafo = document.querySelector("#paragrafFirstCursor");
+
+  
+    if(cursor_paragrafo.value > elementClicked.value -1)
     {
-      $('#paragrafFirstCursor')
-      
+      if(avanco)
+      {
+
+        AvancoDeCursorPosterior(elementClicked);
+
+      }else {
+        
+        RetrocessoDeCursorPosterior(elementClicked);
+      }
+     
+    }else{
+
+        AcompanhamentoDeCursor(elementClicked);
+
     }
-    
+  
+}
+
+function entradaDeSliderParagraf(elementClicked)
+{
+  if(elementClicked.value >= parseInt(document.querySelector('#thumbright').style.left))
+  {
+    AcompanhamentoDeCursor(elementClicked);
+
+  }else{
+
+      return 
   }
 }
 
-var setValueQuery = (valor) => 
-{
-   document.querySelector('#paragrafFirstCursor').value = valor;
-   this
+var AvancoDeCursorPosterior = (elementClicked) => {
+
+  let value = $('#paragrafFirstCursor').val();
+  let interado = parseInt(value) + 1;
+  $(`#inverse-left-paragrafo`).css('width', `${interado}%`);
+  $(`#rage-paragrafo`).css('left', `${interado }%`);
+  $(`#paragrafoInicial`).css('left', `${interado }%`);
+  $('#paragrafFirstCursor').val(interado);
+};
+
+var RetrocessoDeCursorPosterior = (elementClicked) => {
+
+  let value = $('#paragrafFirstCursor').val();
+  let interado = parseInt(value) - 1;
+  $(`#inverse-left-paragrafo`).css('width', `${interado}%`);
+  $(`#rage-paragrafo`).css('left', `${interado }%`);
+  $(`#paragrafoInicial`).css('left', `${interado }%`);
+  $('#paragrafFirstCursor').val(interado);
 };
 
 var AcompanhamentoDeCursor = (elementClicked) => {
-
-  elementClicked.value=Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
-  let value = (elementClicked.value/parseInt(elementClicked.max))*100
-  var children = elementClicked.parentNode.childNodes[1].childNodes;
-  children[1].style.width=value+'%';
-  children[5].style.left=value+'%';
-  children[7].style.left=value+'%';
+  let value = (elementClicked.value/parseInt(elementClicked.max))*100;
+  $(`#inverse-left-paragrafo`).css('width', `${value}%`);
+  $(`#rage-paragrafo`).css('left', `${value}%`);
+  $(`#paragrafoInicial`).css('left', `${value}%`);
+  $('#paragrafFirstCursor').val(value);
 };
 
 function entradaDeSliderLast(elementClicked, isParagrafo)
 {  
-  
-    elementClicked.value=Math.max(elementClicked.value,elementClicked.parentNode.childNodes[3].value-(-1));
-    let value = (elementClicked.value/parseInt(elementClicked.max))*100
-    var children = elementClicked.parentNode.childNodes[1].childNodes;
-    children[3].style.width=(100-value)+'%';
-    children[5].style.right=(100-value)+'%';
-    children[9].style.left=value+'%';
+  //debugger
+  elementClicked.value=Math.max(elementClicked.value,elementClicked.parentNode.childNodes[3].value-(-1));
+  let value = (elementClicked.value/parseInt(elementClicked.max))*100
+  var children = elementClicked.parentNode.childNodes[1].childNodes;
 
-    if(isParagrafo)
-    {
-      document.querySelector('#fake_textarea').style.paddingRight = ((100 - value) + "%");
-    }
-    
-    
+  children[3].style.width=(100-value)+'%';
+  children[5].style.right=(100-value)+'%';
+  children[9].style.left=value+'%';
 
+  if(isParagrafo)
+  {
+    document.querySelector('#fake_textarea').style.paddingRight = ((100 - value) + "%");
+  }
 }
 
-// outro
-var inputElementSlidefirst = document.querySelectorAll('input[type="range"][id=firstCursorRule]')[0]
-inputElementSlidefirst.addEventListener("input", (e) => {  entradaDeSliderFirst(e.target, true); });
 
-var inputElementSlidelast = document.querySelectorAll('input[type="range"][id=lastCursosRule]')[0]
-inputElementSlidelast.addEventListener("input", (e) => {  entradaDeSliderLast(e.target, true); });
+$('#firstCursorRule').on('input', function(event) {
+  event.preventDefault();
+
+  entradaDeSliderFirst(event.target);
+});
+
+$('#lastCursosRule').on('input', function(event) {
+  event.preventDefault();
+
+  entradaDeSliderLast(event.target, true);
+});
+
 
 // para os cursores de paragrafo 
 
-var inputElementParagrafoSlidefirst = document.querySelectorAll('input[type="range"][id=paragrafFirstCursor]')[0]
-inputElementParagrafoSlidefirst.addEventListener("input", (e) => {  entradaDeSliderFirst(e.target, false); });
+$('#paragrafFirstCursor').on('input', function(event) {
+  event.preventDefault();
+  entradaDeSliderParagraf(event.target);
 
-var inputElementParagrafoSlidelast = document.querySelectorAll('input[type="range"][id=paragrafLastCursor]')[0]
-inputElementParagrafoSlidelast.addEventListener("input", (e) => {  entradaDeSliderLast(e.target, false); });
+});
+
+$('#paragrafLastCursor').on('input', function(event) {
+  event.preventDefault();
+
+  entradaDeSliderLast(event.target, false);
+});
