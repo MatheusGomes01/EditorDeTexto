@@ -51,7 +51,7 @@ desenho.appendChild(escala_numerica);
 
 function entradaDeSliderFirst(elementClicked, isParagrafo)
 {  
-  debugger
+  
   elementClicked.value=Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
   let value = (elementClicked.value/parseInt(elementClicked.max))*100
   var children = elementClicked.parentNode.childNodes[1].childNodes;
@@ -70,7 +70,7 @@ function entradaDeSliderFirst(elementClicked, isParagrafo)
 // logica de seguir cursor 
     if(cursor_paragrafo.value < elementClicked.value)
     {
-
+      $('#paragrafFirstCursor')
       
     }
     
@@ -95,7 +95,7 @@ var AcompanhamentoDeCursor = (elementClicked) => {
 
 function entradaDeSliderLast(elementClicked, isParagrafo)
 {  
-  debugger
+  
     elementClicked.value=Math.max(elementClicked.value,elementClicked.parentNode.childNodes[3].value-(-1));
     let value = (elementClicked.value/parseInt(elementClicked.max))*100
     var children = elementClicked.parentNode.childNodes[1].childNodes;
