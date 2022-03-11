@@ -60,9 +60,8 @@ $(document).ready(function() {
 				selection.modify('extend', 'backward', 'character');
 			}
 
-			document.execCommand('insertHTML', false, '<br />&zwnj;');
-			document.execCommand('insertHTML', false, '<p>&zwnj;&nbsp; teste</p>');
-			e.preventDefault();
+			document.execCommand('insertHTML', false, '<div class="paragrafos">&zwnj;</div>');
+			///e.preventDefault();
 		}
 	});
 

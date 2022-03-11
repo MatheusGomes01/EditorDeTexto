@@ -1,13 +1,13 @@
 function TemplateTagTitulo(value){
-	return `<titulo contenteditable="false" class="dispotivo-titulo">Titulo ${value}&zwnj;</titulo>&zwnj;<br />`
+	return `<titulo contenteditable="false" class="dispotivo-titulo">Titulo ${value}&zwnj;</titulo><div class="paragrafos">&zwnj;</div>`
 }
 
 function TemplateTagCapitulo(value){
-	return `<capitulo contenteditable="false" class="dispotivo-capitulo">Capítulo ${value}&zwnj;</capitulo>&zwnj;<br />`
+	return `<capitulo contenteditable="false" class="dispotivo-capitulo">Capítulo ${value}&zwnj;</capitulo><div class="paragrafos">&zwnj;</div>`
 }
 
 function TemplateTagSecao(value){
-	return `<secao contenteditable="false" class="dispotivo-secao">Seção ${value}&zwnj;</secao>&zwnj;<br />`
+	return `<secao contenteditable="false" class="dispotivo-secao">Seção ${value}&zwnj;</secao><div class="paragrafos">&zwnj;</div>`
 }
 
 function TemplateTagArtigo(value){
@@ -33,15 +33,15 @@ function TemplateTagItem(value){
 
 
 function TemplateDeTagTituloCustomizado(value){
-	return `<tituloCustomizado class="dispotivo-titulo-customizado">${value}</tituloCustomizado>&nbsp;<br />&zwnj;`
+	return `<tituloCustomizado class="dispotivo-titulo-customizado">${value}</tituloCustomizado>&nbsp;<div class="paragrafos">&zwnj;</div>`
 }
 
 function TemplateDeTagCapituloCustomizado(value){
-	return `<capituloCustomizado class="dispotivo-capitulo-customizado">${value}</capituloCustomizado>&nbsp;<br />&zwnj;`
+	return `<capituloCustomizado class="dispotivo-capitulo-customizado">${value}</capituloCustomizado>&nbsp;<div class="paragrafos">&zwnj;</div>`
 }
 
 function TemplateDeTagSecaoCustomizado(value){
-	return `<secaoCustomizado class="dispotivo-secao-customizado">${value}</secaoCustomizado>&nbsp;<br />&zwnj;`
+	return `<secaoCustomizado class="dispotivo-secao-customizado">${value}</secaoCustomizado>&nbsp;<div class="paragrafos">&zwnj;</div>`
 }
 
 function TemplateDeTagArtigoCustomizado(artigo, value){
