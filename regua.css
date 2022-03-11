@@ -69,18 +69,27 @@
     right: 15px;
     height: 5px;
   }
-  [slider] > div > [inverse-left] {
+
+  [slider] > div > [inverse-left], [slider] > div > #inverse-left-normal {
     position: absolute;
     left: 0;
-    height: 10px;
+    height: 2px;
     background-color: #CCC;
     margin: 0 -11px; /* para poder preencher o editor */
   }
   
+  [slider] > div > #inverse-left-normal {
+     height: 10px !important;
+  }
+
+  [slider] > div > #inverse-left-paragrafo {
+     height: 5px !important;
+  }
+
   [slider] > div > [inverse-right] {
     position: absolute;
     right: 0;
-    height: 10px;
+    height: 2px;
     background-color: #CCC;
     margin: 0 7px;
   }
@@ -114,8 +123,7 @@
     pointer-events: none;
     -webkit-appearance: none;
     z-index: 3; 
-    height: 14px;
-    top: -2px;
+    height: 5px;
     width: 100%;
     opacity: 0;
   }
@@ -125,8 +133,7 @@
     pointer-events: none;
     -webkit-appearance: none;
     z-index: 3; 
-    height: 14px;
-    top: -2px;
+    height: 10px;
     width: 100%;
     opacity: 0;
   }
