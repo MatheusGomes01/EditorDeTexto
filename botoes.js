@@ -27,8 +27,7 @@ $(document).ready(function() {
 	});
 
 	$('#jForeColor').change(function(event) {
-		document.execCommand('styleWithCSS', false, true);
-		document.execCommand('foreColor', false, "rgba(0,0,0,0.5)");
+		document.execCommand('foreColor', false, hexToRgbA(event.target.value));
 	});
 	
 	
