@@ -61,6 +61,7 @@ $(document).ready(function() {
 			}
 
 			document.execCommand('insertHTML', false, '<br />&zwnj;');
+			document.execCommand('insertHTML', false, '<p>&zwnj;&nbsp; teste</p>');
 			e.preventDefault();
 		}
 	});

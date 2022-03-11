@@ -26,7 +26,7 @@ function adicionaEvento(value) {
 		selection.modify('extend', 'backward', 'character');
 	}
 
-	debugger;
+	//debugger;
 	document.execCommand('insertHTML', false, VerificaTipoDeEvento(value));
 	ReorganizacaoGeral();
 	$('#contextMenu').hide()
