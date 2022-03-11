@@ -50,6 +50,7 @@
                 background: darkgray;
             }
 
+
             .dispotivo-titulo, .dispotivo-capitulo, .dispotivo-secao, .dispotivo-titulo-customizado, .dispotivo-capitulo-customizado, .dispotivo-secao-customizado{
                 display: block;
                 text-align: center;
@@ -90,21 +91,36 @@
         <button id="jJRight"><i>Alinhado a direita</i></button>
 
 
-        <div slider id="slider-distance">
-            <div>
-              <div inverse-left style="width:70%;"></div>
-              <div inverse-right style="width:70%;"></div>
-              <div range style="left:0%;right:0%;"></div>
-              <span id="thumbright" thumb style="left:0%;"></span>
-              <span id="thumbleft" thumb style="left:100%;"></span>
 
-          </div>
-          <input class="first" type="range" value="0" max="100" min="0" step="1"/>
+    <div slider id="slider-distance">
+        <div>
+          <span inverse-left  style="width:70%;"></span>
+          <span inverse-right  style="width:70%;"></span>
+          <div range style="left:0%;right:0%;"></div>
+          <span id="paragrafoInicial" thumb style="left:0%;"></span>
+          <span id="paragrafoFinal" thumb style="left:100%;"></span>
+       </div>
 
-          <input class="last" type="range" value="100" max="100" min="0" step="1" />
+      <input id="paragrafFirstCursor" type="range" value="0" max="100" min="0" step="1"/>
+      
+      <input id="paragrafLastCursor" type="range" value="100" max="100" min="0" step="1" />
 
-          <div id="desenho" style="display:flex; justify-content:space-between; gap:10px;"></div>
+    </div>
+
+
+    <div slider id="slider-distance">
+        <div>
+          <div inverse-left style="width:70%;"></div>
+          <div inverse-right style="width:70%;"></div>
+          <div range style="left:0%;right:0%;"></div>
+          <span id="thumbright" thumb style="left:0%;"></span>
+          <span id="thumbleft" thumb style="left:100%;"></span>
+          
       </div>
+      <input id="firstCursorRule" type="range" value="0" max="100" min="0" step="1"/>
+      
+      <input id="lastCursosRule" type="range" value="100" max="100" min="0" step="1" />
+
 
       <div id='fake_textarea' draggable="false"
       ondragstart="event.dataTransfer.setData('text/plain',  $('#fake_textarea').html());"
