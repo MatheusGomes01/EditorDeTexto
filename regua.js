@@ -43,75 +43,93 @@ function AdicionaEscalaMaior(ofrarmento)
 
 }
 
-var desenho = document.querySelectorAll("#desenho")[0];
+var desenho = document.querySelector("#desenho");
 desenho.appendChild(escala_numerica);
 
 
 /*slier que esta em stackoverflow */ 
 
-function entradaDeSliderFirst(elementClicked, isParagrafo)
+function entradaDeSliderFirst(elementClicked)
 {  
-  let cursor_paragrafo = document.querySelector('#paragrafFirstCursor');
-  let cursor_normal = document.querySelector('#firstCursorRule');
 
-  let paragrafoInicial = document.querySelector('#paragrafoInicial');
-  let cursorInferior = document.querySelector('#thumbright');
+  let avanco = false;
+   if( parseInt(document.querySelector('#thumbright').style.left) < elementClicked.value )
+   {
+      avanco = true;
+   };
 
-  if(elementClicked.id == "paragrafFirstCursor"){    
-    let pl = paragrafoInicial.style.left.replace('%', '');
-    let cl = cursorInferior.style.left.replace('%', '');
+  console.log(document.querySelector('#thumbright').style.left.replace("%", ''));
+  console.log(elementClicked.value);
 
-    if (parseInt(pl) < parseInt(cl)) {
-      paragrafoInicial.style.left = cursorInferior.style.left;
+  let value = (elementClicked.value/parseInt(elementClicked.max))*100;
 
-      return;
-    }
-  }
+    document.querySelector('#inverse-left-margin').style.width=value+'%';
+    document.querySelector('#range-margin').style.left=value+'%';
+    document.querySelector('#thumbright').style.left=value+'%';
 
-  //debugger
-  elementClicked.value=Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
-  let value = (elementClicked.value/parseInt(elementClicked.max))*100
-  var children = elementClicked.parentNode.childNodes[1].childNodes;
-  children[1].style.width=value+'%';
-  children[5].style.left=value+'%';
-  children[7].style.left=value+'%';
-
-  if(isParagrafo)
-  {
     document.querySelector('#fake_textarea').style.paddingLeft = (value + "%");
-  }
-
   
 
-  if(elementClicked.id == "firstCursorRule")
-  {
+    var cursor_paragrafo = document.querySelector("#paragrafFirstCursor");
 
-    cursor_paragrafo.value = cursor_normal.value;
-
-
-    if(cursor_paragrafo.value == cursor_normal.value)
+  
+    if(cursor_paragrafo.value > elementClicked.value -1)
     {
-      AcompanhamentoDeCursor(elementClicked);
-    }
+      if(avanco)
+      {
 
+        AvancoDeCursorPosterior(elementClicked);
+
+      }else {
+        
+        RetrocessoDeCursorPosterior(elementClicked);
+      }
+     
+    }else{
+
+        AcompanhamentoDeCursor(elementClicked);
+
+    }
+  
+}
+
+function entradaDeSliderParagraf(elementClicked)
+{
+  if(elementClicked.value >= parseInt(document.querySelector('#thumbright').style.left))
+  {
+    AcompanhamentoDeCursor(elementClicked);
+
+  }else{
+
+      return 
   }
 }
 
-var setValueQuery = (valor) => 
-{
- document.querySelector('#paragrafFirstCursor').value = valor;
- this
+var AvancoDeCursorPosterior = (elementClicked) => {
+
+  let value = $('#paragrafFirstCursor').val();
+  let interado = parseInt(value) + 1;
+  $(`#inverse-left-paragrafo`).css('width', `${interado}%`);
+  $(`#rage-paragrafo`).css('left', `${interado }%`);
+  $(`#paragrafoInicial`).css('left', `${interado }%`);
+  $('#paragrafFirstCursor').val(interado);
+};
+
+var RetrocessoDeCursorPosterior = (elementClicked) => {
+
+  let value = $('#paragrafFirstCursor').val();
+  let interado = parseInt(value) - 1;
+  $(`#inverse-left-paragrafo`).css('width', `${interado}%`);
+  $(`#rage-paragrafo`).css('left', `${interado }%`);
+  $(`#paragrafoInicial`).css('left', `${interado }%`);
+  $('#paragrafFirstCursor').val(interado);
 };
 
 var AcompanhamentoDeCursor = (elementClicked) => {
-
-
-  elementClicked.value = Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
   let value = (elementClicked.value/parseInt(elementClicked.max))*100;
-
-  $(`#inverse-left-paragrafo`).css('width', `${value}%`)
-  $(`#paragrafoInicial`).css('left', `${value}%`)
-  $(`#rageParagrafo`).css('left', `${value}%`)
+  $(`#inverse-left-paragrafo`).css('width', `${value}%`);
+  $(`#rage-paragrafo`).css('left', `${value}%`);
+  $(`#paragrafoInicial`).css('left', `${value}%`);
   $('#paragrafFirstCursor').val(value);
 };
 
@@ -134,10 +152,14 @@ function entradaDeSliderLast(elementClicked, isParagrafo)
 
 
 $('#firstCursorRule').on('input', function(event) {
-  entradaDeSliderFirst(event.target, true);
+  event.preventDefault();
+
+  entradaDeSliderFirst(event.target);
 });
 
 $('#lastCursosRule').on('input', function(event) {
+  event.preventDefault();
+
   entradaDeSliderLast(event.target, true);
 });
 
@@ -145,9 +167,13 @@ $('#lastCursosRule').on('input', function(event) {
 // para os cursores de paragrafo 
 
 $('#paragrafFirstCursor').on('input', function(event) {
-  entradaDeSliderFirst(event.target, true);
+  event.preventDefault();
+  entradaDeSliderParagraf(event.target);
+
 });
 
 $('#paragrafLastCursor').on('input', function(event) {
-  entradaDeSliderLast(event.target, true);
+  event.preventDefault();
+
+  entradaDeSliderLast(event.target, false);
 });
