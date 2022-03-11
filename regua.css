@@ -1,82 +1,5 @@
-.second-container{
-    margin-top:50px;
-  }
-  
-  .ranges{
-    display:flex;
-    gap:100px;
-  }
-  
-  input.xdirection{
-    width: 200px;
-  }
-
-  input.ydirection{
-      width: 300px;
-  }
-
-
-  
-  .code-container {
-    margin-top:50px;
-    display:inline-block;
-    padding:15px;
-    text-align: center;
-    background-color: #272822;
-    border-radius: 3px;
-    color: #F8F8F2;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  }
-  
-  .token-function {
-    color: #E6DB74;
-    width: 40px;
-  }
-
 
   /* regras de slider */
-
-
-  .slidecontainer {
-    width: 100%; /* Width of the outside container */
-  }
-  
-  /* The slider itself */
-  .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 90%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
-  }
-  
-  /* Mouse-over effects */
-  .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
-  }
-  
-  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-
 
   /* segundo o exemplo stack overflow slider */
 
@@ -94,21 +17,42 @@
    }
 
    #thumbright{
+    margin-left: -15px;
     left: 13%;
     width: 0px;
     height: 0px;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-top: 20px solid rgba(14, 107, 241, 0.86);
+    margin-top: 7px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid rgb(14 107 241);
+
+   }
+
+   #paragrafoInicial{
+    width: 19px;
+    height: 5px;
+    background-color: rgb(14 107 241);
+    margin-left: -14px;
+    margin-top: 5px;
+   }
+
+   #paragrafoFinal{
+    width: 20px;
+    height: 5px;
+    background-color: rgb(14 107 241);
+    margin-left: -14px;
+    margin-top: 5px;
    }
 
    #thumbleft{
     left: 13%;
     width: 0px;
     height: 0px;
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-top: 20px solid rgba(14, 107, 241, 0.86);
+    margin-top: 7px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid rgb(14 107 241);
+    margin-left: -14px;
    }
 
   [slider] {
@@ -159,16 +103,28 @@
     text-align: left;
     cursor: pointer;
    /* box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4); */ 
-   /*  background-color: #FFF;*/
-    /* border-radius: 50%;*/
+   /*  background-color: #FFF; */
+   /* border-radius: 50%; */
     outline: none;
   }
-  
+
+  [sliderparagrafo] > input[type=range]
+  {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    z-index: 3; 
+    height: 14px;
+    top: -2px;
+    width: 100%;
+    opacity: 0;
+  }
+
   [slider] > input[type=range] {
     position: absolute;
     pointer-events: none;
     -webkit-appearance: none;
-    z-index: 3;
+    z-index: 3; 
     height: 14px;
     top: -2px;
     width: 100%;
@@ -248,5 +204,4 @@
   [slider]:hover > div > [sign] {
     opacity: 1;
   }
-
 

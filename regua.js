@@ -49,8 +49,9 @@ desenho.appendChild(escala_numerica);
 
 /*slier que esta em stackoverflow */ 
 
-function entradaDeSliderFirst(elementClicked)
+function entradaDeSliderFirst(elementClicked, isParagrafo)
 {  
+  debugger
   elementClicked.value=Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
   let value = (elementClicked.value/parseInt(elementClicked.max))*100
   var children = elementClicked.parentNode.childNodes[1].childNodes;
@@ -58,12 +59,43 @@ function entradaDeSliderFirst(elementClicked)
   children[5].style.left=value+'%';
   children[7].style.left=value+'%';
 
-  document.querySelector('#fake_textarea').style.paddingLeft = (value + "%");
+  if(isParagrafo)
+  {
+    document.querySelector('#fake_textarea').style.paddingLeft = (value + "%");
+  }
 
+  if(elementClicked.id == "firstCursorRule")
+  {
+    const cursor_paragrafo = document.querySelector('#paragrafFirstCursor');
+// logica de seguir cursor 
+    if(cursor_paragrafo.value < elementClicked.value)
+    {
+
+      
+    }
+    
+  }
 }
 
-function entradaDeSliderLast(elementClicked)
+var setValueQuery = (valor) => 
+{
+   document.querySelector('#paragrafFirstCursor').value = valor;
+   this
+};
+
+var AcompanhamentoDeCursor = (elementClicked) => {
+
+  elementClicked.value=Math.min(elementClicked.value,elementClicked.parentNode.childNodes[5].value-1);
+  let value = (elementClicked.value/parseInt(elementClicked.max))*100
+  var children = elementClicked.parentNode.childNodes[1].childNodes;
+  children[1].style.width=value+'%';
+  children[5].style.left=value+'%';
+  children[7].style.left=value+'%';
+};
+
+function entradaDeSliderLast(elementClicked, isParagrafo)
 {  
+  debugger
     elementClicked.value=Math.max(elementClicked.value,elementClicked.parentNode.childNodes[3].value-(-1));
     let value = (elementClicked.value/parseInt(elementClicked.max))*100
     var children = elementClicked.parentNode.childNodes[1].childNodes;
@@ -71,16 +103,26 @@ function entradaDeSliderLast(elementClicked)
     children[5].style.right=(100-value)+'%';
     children[9].style.left=value+'%';
 
-    document.querySelector('#fake_textarea').style.paddingRight = ((100 - value) + "%");
+    if(isParagrafo)
+    {
+      document.querySelector('#fake_textarea').style.paddingRight = ((100 - value) + "%");
+    }
+    
+    
 
 }
 
 // outro
-var inputElementSlidefirst = document.querySelectorAll('input[type="range"][class=first]')[0]
-inputElementSlidefirst.addEventListener("input", (e) => {  entradaDeSliderFirst(e.target); });
+var inputElementSlidefirst = document.querySelectorAll('input[type="range"][id=firstCursorRule]')[0]
+inputElementSlidefirst.addEventListener("input", (e) => {  entradaDeSliderFirst(e.target, true); });
 
-var inputElementSlidelast = document.querySelectorAll('input[type="range"][class=last]')[0]
-inputElementSlidelast.addEventListener("input", (e) => {  entradaDeSliderLast(e.target); });
+var inputElementSlidelast = document.querySelectorAll('input[type="range"][id=lastCursosRule]')[0]
+inputElementSlidelast.addEventListener("input", (e) => {  entradaDeSliderLast(e.target, true); });
 
+// para os cursores de paragrafo 
 
+var inputElementParagrafoSlidefirst = document.querySelectorAll('input[type="range"][id=paragrafFirstCursor]')[0]
+inputElementParagrafoSlidefirst.addEventListener("input", (e) => {  entradaDeSliderFirst(e.target, false); });
 
+var inputElementParagrafoSlidelast = document.querySelectorAll('input[type="range"][id=paragrafLastCursor]')[0]
+inputElementParagrafoSlidelast.addEventListener("input", (e) => {  entradaDeSliderLast(e.target, false); });
